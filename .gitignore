@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# exclude .env from the github commits
+.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
