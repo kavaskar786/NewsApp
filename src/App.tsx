@@ -1,9 +1,9 @@
-import { Button } from "./components/ui/button";
+import LandingPage from "./pages/LandingPage";
 
 const App = () => {
   return (
     <div>
-      <Button />
+      <LandingPage />
     </div>
   );
 };
