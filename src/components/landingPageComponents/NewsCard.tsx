@@ -53,7 +53,7 @@ const NewsCard = ({ Article }: { Article: Article }) => {
           )}
 
           <a href={url}>
-            <Button>Link</Button>
+            <Button className="mt-4">Link</Button>
           </a>
         </motion.div>
       </Card>

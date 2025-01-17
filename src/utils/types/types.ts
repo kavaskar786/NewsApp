@@ -33,18 +33,11 @@ export interface Search {
   setSearch: (search: string) => void;
 }
 
-export interface Category {
-  category:
-    | "business"
-    | "entertainment"
-    | "general"
-    | "health"
-    | "science"
-    | "sports"
-    | "technology";
-}
+export type Category = {
+  category: string;
+};
 export interface CategoryStore {
-  category: Category;
+  category: string;
 
-  setCategory: (category: Category) => void;
+  setCategory: (category: string) => void;
 }

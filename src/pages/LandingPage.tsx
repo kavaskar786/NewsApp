@@ -6,9 +6,11 @@ import Loader from "@/components/reusableComponents/Loader";
 import Search from "@/components/reusableComponents/Search";
 import { useSearchStore } from "@/stores/useSearchStore";
 import NoArticle from "@/components/landingPageComponents/NoArticle";
+import { useCategoryStore } from "@/stores/useCategoryStore";
 
 const LandingPage: React.FC = () => {
   const { articles, setArticles } = useArticleStore();
+  const { category } = useCategoryStore();
   const { search } = useSearchStore();
 
   useEffect(() => {
@@ -16,6 +18,7 @@ const LandingPage: React.FC = () => {
       try {
         const data = await fetchTopHeadlines({
           country: "us",
+          category: category,
           q: search,
           pageSize: 100,
         });
@@ -26,8 +29,8 @@ const LandingPage: React.FC = () => {
     };
 
     fetchNews();
-  }, [setArticles, search]);
-  console.log(articles);
+  }, [setArticles, search, category]);
+
   return (
     <div className="min-h-screen flex items-center justify-center flex-col">
       <Search />

@@ -29,7 +29,7 @@ const Search = () => {
           placeholder="Search here for articles"
         />
       </div>
-      <div className="flex items-center justify-center gap-2 mt-3">
+      <div className="flex items-center justify-center gap-2 mt-3 flex-wrap w-[95%]">
         {CATEGORIES.map((item, index) => (
           <div key={index}>
             <CategoryComp item={item} />
