@@ -1,9 +1,11 @@
-import { Button } from "./components/ui/button";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/reusableComponents/Navbar";
 
 const App = () => {
   return (
     <div>
-      <Button />
+      <Navbar />
+      <Outlet />
     </div>
   );
 };
