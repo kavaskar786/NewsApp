@@ -7,9 +7,9 @@ import CategoryComp from "./CategoryComp";
 const Search = () => {
   const { search, setSearch } = useSearchStore();
   const CATEGORIES = [
+    "general",
     "business",
     "entertainment",
-    "general",
     "health",
     "science",
     "sports",
