@@ -3,6 +3,7 @@ export interface NewsApiParams {
   category?: string;
   pageSize?: number;
   page?: number;
+  q?: string | undefined;
   apiKey?: string;
 }
 
@@ -25,4 +26,25 @@ export interface Article {
 export interface ArticleStoreType {
   articles: Article[] | null;
   setArticles: (articles: Article[]) => void;
+}
+
+export interface Search {
+  search: string | undefined;
+  setSearch: (search: string) => void;
+}
+
+export interface Category {
+  category:
+    | "business"
+    | "entertainment"
+    | "general"
+    | "health"
+    | "science"
+    | "sports"
+    | "technology";
+}
+export interface CategoryStore {
+  category: Category;
+
+  setCategory: (category: Category) => void;
 }

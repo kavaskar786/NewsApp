@@ -6,7 +6,7 @@ export const fetchTopHeadlines = async (params: NewsApiParams) => {
     const response = await apiClient.get("/top-headlines", {
       params: {
         ...params,
-        apiKey: "84a6b677e1014e02bf96b53de4676b0e", // Use token from .env
+        apiKey: "08d21ca3d1ad4d169f96b480eb0317da", // Use token from .env
       },
     });
     return response.data;

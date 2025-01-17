@@ -1,9 +1,11 @@
-import LandingPage from "./pages/LandingPage";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/reusableComponents/Navbar";
 
 const App = () => {
   return (
     <div>
-      <LandingPage />
+      <Navbar />
+      <Outlet />
     </div>
   );
 };
