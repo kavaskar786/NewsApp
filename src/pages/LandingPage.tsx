@@ -4,44 +4,47 @@ import { fetchTopHeadlines } from "@/hooks/useFetchTopHeadlines";
 import { NewsCard } from "@/components/landingPageComponents/NewsCard";
 import { Loader } from "@/components/reusableComponents/Loader";
 import { SearchComp } from "@/components/reusableComponents/SearchComp";
-import { useSearchStore } from "@/stores/useSearchStore";
 import { NoArticle } from "@/components/landingPageComponents/NoArticle";
 import { useCategoryStore } from "@/stores/useCategoryStore";
+import { useLoadingStore } from "@/stores/useLoadingStore";
+import { useResultedArticleStore } from "@/stores/useResultedArticlesStore";
 
 const LandingPage: React.FC = () => {
-  const { articles, setArticles } = useArticleStore();
+  const { setArticles } = useArticleStore();
   const { category } = useCategoryStore();
-  const { search } = useSearchStore();
+  const { loading, setLoading } = useLoadingStore();
+  const { resultedArticles, setResultedArticles } = useResultedArticleStore();
 
   useEffect(() => {
     const fetchNews = async () => {
+      setLoading(true);
       try {
         const data = await fetchTopHeadlines({
           country: "us",
           category: category,
-          q: search,
           pageSize: 100,
         });
         setArticles(data.articles);
+        setResultedArticles(data.articles);
       } catch (error) {
         console.error("Failed to fetch articles:", error);
       }
+      setLoading(false);
     };
-
     fetchNews();
-  }, [setArticles, search, category]);
+  }, [setArticles, category, setLoading, setResultedArticles]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <SearchComp />
-      {articles?.length === 0 ? (
+      {resultedArticles.length === 0 && !loading ? (
         <NoArticle />
       ) : (
         <div className="flex items-center justify-center">
-          {articles ? (
+          {resultedArticles && !loading ? (
             <div className="flex flex-col items-center justify-center">
               <div className="mt-10 flex min-h-[92vh] flex-wrap items-center justify-center gap-8">
-                {articles.map((article, index) =>
+                {resultedArticles.map((article, index) =>
                   article.title !== "[Removed]" ? (
                     <div key={index}>
                       <NewsCard Article={article} />

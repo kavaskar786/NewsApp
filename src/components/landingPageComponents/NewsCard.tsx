@@ -1,6 +1,6 @@
 import { Article } from "@/utils/types/types";
 import { Card } from "../ui/card";
-import image from "../../assets/images/image.png";
+import image from "../../assets/images/newsCardBackupImage.png";
 import { motion } from "framer-motion";
 import { FaClock } from "react-icons/fa";
 

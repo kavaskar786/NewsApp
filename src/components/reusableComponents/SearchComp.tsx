@@ -4,9 +4,13 @@ import { CiSearch } from "react-icons/ci";
 
 import CategoryComp from "./CategoryComp";
 import { motion } from "framer-motion";
+import { useArticleStore } from "@/stores/useArticleStore";
+import { useResultedArticleStore } from "@/stores/useResultedArticlesStore";
 
 const SearchComp = () => {
   const { search, setSearch } = useSearchStore();
+  const { articles } = useArticleStore();
+  const { setResultedArticles } = useResultedArticleStore();
   const CATEGORIES = [
     "general",
     "business",
@@ -16,6 +20,17 @@ const SearchComp = () => {
     "science",
     "sports",
   ];
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchQuery = e.target.value.toLowerCase();
+    setSearch(searchQuery);
+    setResultedArticles(
+      articles.filter(
+        (article) =>
+          article.title.toLowerCase().includes(searchQuery) ||
+          article.description?.toLowerCase().includes(searchQuery),
+      ),
+    );
+  };
   return (
     <div className="mx-auto flex w-[95%] flex-col items-center justify-between">
       <motion.div
@@ -30,7 +45,7 @@ const SearchComp = () => {
           className="w-full rounded-full pl-12"
           type="text"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={handleSearch}
           placeholder="Search here for articles"
         />
       </motion.div>

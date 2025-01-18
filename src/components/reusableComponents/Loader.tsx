@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 const Loader = () => {
   return (
     <div className="flex min-h-[92vh] flex-col items-center justify-center">
-      <h1 className="text-2xl font-semibold">Loading screen</h1>
+      <h1 className="text-2xl font-semibold">Loading...</h1>
       <div className="mt-20 flex items-center justify-center gap-2">
         {[...Array(3)].map((_, i) => (
           <motion.div
