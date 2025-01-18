@@ -3,7 +3,7 @@ import Navbar from "./components/reusableComponents/Navbar";
 
 const App = () => {
   return (
-    <div>
+    <div className="">
       <Navbar />
       <Outlet />
     </div>

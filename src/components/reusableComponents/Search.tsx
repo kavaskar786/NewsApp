@@ -3,21 +3,26 @@ import { Input } from "../ui/input";
 import { CiSearch } from "react-icons/ci";
 
 import CategoryComp from "./CategoryComp";
+import { motion } from "framer-motion";
 
 const Search = () => {
   const { search, setSearch } = useSearchStore();
   const CATEGORIES = [
     "general",
     "business",
+    "technology",
     "entertainment",
     "health",
     "science",
     "sports",
-    "technology",
   ];
   return (
-    <>
-      <div className="relative md:w-[50rem]">
+    <div className="flex items-center justify-between flex-col  w-[95%] mx-auto">
+      <motion.div
+        className=" relative  rounded-full"
+        whileHover={{ width: "35rem", scale: 1.05 }}
+        transition={{ duration: 0.5 }}
+      >
         <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
           <CiSearch />
         </span>
@@ -28,15 +33,15 @@ const Search = () => {
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search here for articles"
         />
-      </div>
-      <div className="flex items-center justify-center gap-2 mt-3 flex-wrap w-[95%]">
+      </motion.div>
+      <div className="flex items-center justify-center gap-2  flex-wrap mt-3">
         {CATEGORIES.map((item, index) => (
           <div key={index}>
             <CategoryComp item={item} />
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
