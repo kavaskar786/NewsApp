@@ -24,8 +24,12 @@ export interface Article {
 }
 
 export interface ArticleStoreType {
-  articles: Article[] | null;
+  articles: Article[];
   setArticles: (articles: Article[]) => void;
+}
+export interface ResultedArticlesStoreType {
+  resultedArticles: Article[];
+  setResultedArticles: (articles: Article[]) => void;
 }
 
 export interface Search {
@@ -40,4 +44,8 @@ export interface CategoryStore {
   category: string;
 
   setCategory: (category: string) => void;
+}
+export interface LoadingStore {
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
