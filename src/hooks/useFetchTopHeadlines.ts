@@ -13,7 +13,7 @@ export const fetchTopHeadlines = async (params: NewsApiParams) => {
   } catch (error: unknown) {
     console.error(
       "Error fetching top headlines:",
-      error instanceof Error ? error.message : "Unknown error"
+      error instanceof Error ? error.message : "Unknown error",
     );
 
     // Type guard for Axios error
@@ -22,7 +22,7 @@ export const fetchTopHeadlines = async (params: NewsApiParams) => {
         response?: { data?: { message?: string } };
       };
       throw new Error(
-        axiosError.response?.data?.message || "Failed to fetch news."
+        axiosError.response?.data?.message || "Failed to fetch news.",
       );
     }
 

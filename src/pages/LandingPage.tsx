@@ -32,21 +32,21 @@ const LandingPage: React.FC = () => {
   }, [setArticles, search, category]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center flex-col">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <Search />
       {articles?.length === 0 ? (
         <NoArticle />
       ) : (
         <div className="flex items-center justify-center">
           {articles ? (
-            <div className="flex items-center justify-center flex-col">
-              <div className="min-h-[92vh] flex items-center justify-center flex-wrap gap-8 mt-10">
+            <div className="flex flex-col items-center justify-center">
+              <div className="mt-10 flex min-h-[92vh] flex-wrap items-center justify-center gap-8">
                 {articles.map((article, index) =>
                   article.title !== "[Removed]" ? (
                     <div key={index}>
                       <NewsCard Article={article} />
                     </div>
-                  ) : null
+                  ) : null,
                 )}
               </div>
             </div>

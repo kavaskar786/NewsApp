@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 const Loader = () => {
   return (
-    <div className="min-h-[92vh] flex items-center justify-center flex-col">
+    <div className="flex min-h-[92vh] flex-col items-center justify-center">
       <h1 className="text-2xl font-semibold">Loading screen</h1>
-      <div className="flex items-center justify-center mt-20 gap-2 ">
+      <div className="mt-20 flex items-center justify-center gap-2">
         {[...Array(3)].map((_, i) => (
           <motion.div
-            className="h-8 w-8 bg-red-500 rounded-full"
+            className="h-8 w-8 rounded-full bg-red-500"
             key={i}
             animate={{ y: [0, -50, 0] }}
             transition={{
