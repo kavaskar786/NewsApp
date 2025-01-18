@@ -36,9 +36,13 @@ const Search = () => {
       </motion.div>
       <div className="flex items-center justify-center gap-2  flex-wrap mt-3">
         {CATEGORIES.map((item, index) => (
-          <div key={index}>
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.2 }}
+          >
             <CategoryComp item={item} />
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
