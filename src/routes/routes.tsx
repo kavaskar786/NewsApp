@@ -1,9 +1,9 @@
-import App from "@/App";
+import { App } from "@/App";
 
-import ErrorPage from "@/pages/ErrorPage";
+import { ErrorPage } from "@/pages/ErrorPage";
 
-import LandingPage from "@/pages/LandingPage";
-import Login from "@/pages/Login";
+import { LandingPage } from "@/pages/LandingPage";
+import { Login } from "@/pages/Login";
 
 import { createBrowserRouter } from "react-router-dom";
 

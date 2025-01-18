@@ -11,15 +11,15 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-[8vh] shadow-lg mb-12 w-full flex items-center justify-between">
-      <div className="flex items-center justify-between w-[80%] md:w-[95%] mx-auto">
+    <div className="mb-12 flex h-[8vh] w-full items-center justify-between shadow-lg">
+      <div className="mx-auto flex w-[80%] items-center justify-between md:w-[95%]">
         {/* Logo */}
-        <div className="logo flex items-center justify-center text-[#FC4308] font-semibold text-2xl">
+        <div className="logo flex items-center justify-center text-2xl font-semibold text-[#FC4308]">
           News Dog
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-center gap-4">
+        <nav className="hidden items-center justify-center gap-4 md:flex">
           {NavPages.map(({ name, path }, index) => (
             <motion.div
               key={index}
@@ -70,7 +70,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-[8vh] left-0 w-full bg-white shadow-lg flex flex-col items-center gap-4 py-4 z-50"
+            className="absolute left-0 top-[8vh] z-50 flex w-full flex-col items-center gap-4 bg-white py-4 shadow-lg"
           >
             {NavPages.map(({ name, path }, index) => (
               <Link
