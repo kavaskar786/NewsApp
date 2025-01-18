@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useArticleStore } from "@/stores/useArticleStore";
 import { fetchTopHeadlines } from "@/hooks/useFetchTopHeadlines";
-import NewsCard from "@/components/landingPageComponents/NewsCard";
-import Loader from "@/components/reusableComponents/Loader";
-import Search from "@/components/reusableComponents/Search";
+import { NewsCard } from "@/components/landingPageComponents/NewsCard";
+import { Loader } from "@/components/reusableComponents/Loader";
+import { SearchComp } from "@/components/reusableComponents/SearchComp";
 import { useSearchStore } from "@/stores/useSearchStore";
-import NoArticle from "@/components/landingPageComponents/NoArticle";
+import { NoArticle } from "@/components/landingPageComponents/NoArticle";
 import { useCategoryStore } from "@/stores/useCategoryStore";
 
 const LandingPage: React.FC = () => {
@@ -33,7 +33,7 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
-      <Search />
+      <SearchComp />
       {articles?.length === 0 ? (
         <NoArticle />
       ) : (
@@ -59,4 +59,4 @@ const LandingPage: React.FC = () => {
   );
 };
 
-export default LandingPage;
+export { LandingPage };

@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import CategoryComp from "./CategoryComp";
 import { motion } from "framer-motion";
 
-const Search = () => {
+const SearchComp = () => {
   const { search, setSearch } = useSearchStore();
   const CATEGORIES = [
     "general",
@@ -49,4 +49,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export { SearchComp };

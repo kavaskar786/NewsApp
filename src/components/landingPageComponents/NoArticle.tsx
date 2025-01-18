@@ -5,7 +5,7 @@ import noArticleFoundImage from "../../assets/images/noArticleFoundImage.jpg";
 const NoArticle = () => {
   const { setSearch } = useSearchStore();
   return (
-    <div className="min-h-[92vh] flex items-center justify-center flex-col">
+    <div className="flex min-h-[92vh] flex-col items-center justify-center">
       <img
         className="h-[50vh] rounded-lg"
         src={noArticleFoundImage}
@@ -22,4 +22,4 @@ const NoArticle = () => {
     </div>
   );
 };
-export default NoArticle;
+export { NoArticle };

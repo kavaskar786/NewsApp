@@ -21,4 +21,4 @@ const Loader = () => {
     </div>
   );
 };
-export default Loader;
+export { Loader };

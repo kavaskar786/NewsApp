@@ -62,4 +62,4 @@ const NewsCard = ({ Article }: { Article: Article }) => {
   );
 };
 
-export default NewsCard;
+export { NewsCard };

@@ -1,4 +1,4 @@
-import apiClient from "@/utils/api";
+import { apiClient } from "@/utils/api";
 import { NewsApiParams } from "@/utils/types/types";
 
 export const fetchTopHeadlines = async (params: NewsApiParams) => {
