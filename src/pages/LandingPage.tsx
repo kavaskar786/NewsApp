@@ -34,32 +34,41 @@ const LandingPage: React.FC = () => {
     fetchNews();
   }, [setArticles, category, setLoading, setResultedArticles]);
 
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <SearchComp />
-      {resultedArticles.length === 0 && !loading ? (
+  if (resultedArticles.length === 0 && !loading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center">
+        <SearchComp />
         <NoArticle />
-      ) : (
-        <div className="flex items-center justify-center">
-          {resultedArticles && !loading ? (
-            <div className="flex flex-col items-center justify-center">
-              <div className="mt-10 flex min-h-[92vh] flex-wrap items-center justify-center gap-8">
-                {resultedArticles.map((article, index) =>
-                  article.title !== "[Removed]" ? (
-                    <div key={index}>
-                      <NewsCard Article={article} />
-                    </div>
-                  ) : null,
-                )}
-              </div>
-            </div>
-          ) : (
-            <Loader />
-          )}
-        </div>
-      )}
-    </div>
-  );
-};
+      </div>
+    );
+  }
 
+  if (resultedArticles && loading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center">
+        <SearchComp />
+        <Loader />
+      </div>
+    );
+  }
+
+  if (resultedArticles && !loading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center">
+        <SearchComp />
+        <div className="flex flex-col items-center justify-center">
+          <div className="mt-10 flex min-h-[92vh] flex-wrap items-center justify-center gap-8">
+            {resultedArticles.map((article, index) =>
+              article.title !== "[Removed]" ? (
+                <div key={index}>
+                  <NewsCard Article={article} />
+                </div>
+              ) : null,
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+};
 export { LandingPage };
