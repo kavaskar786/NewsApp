@@ -14,7 +14,7 @@ const NewsCard = ({ Article }: { Article: Article }) => {
     <>
       <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
         <a href={url} target="_blank">
-          <Card className="relative h-[24.25rem] w-[20.5rem] overflow-hidden shadow-lg">
+          <Card className="relative h-[24.25rem] w-[20.5rem] overflow-hidden rounded-3xl shadow-lg">
             {/* Image */}
             <img
               className="absolute left-0 top-0 h-full w-full object-cover object-center"

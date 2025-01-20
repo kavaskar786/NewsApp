@@ -38,7 +38,7 @@ const SearchComp = () => {
         whileHover={{ width: "35rem", scale: 1.05 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="absolute left-4 top-1/2 -translate-y-1/2 transform text-gray-500">
+        <span className="absolute left-4 top-1/2 -translate-y-1/2 transform text-muted-foreground">
           <CiSearch />
         </span>
         <Input

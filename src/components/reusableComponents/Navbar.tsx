@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi"; // Import menu and close icons
+import NavItem from "./NavItem";
 
 const Navbar = () => {
   const NavPages: { name: string; path: string }[] = [];
@@ -14,36 +15,25 @@ const Navbar = () => {
     <div className="mb-12 flex h-[8vh] w-full items-center justify-between shadow-lg">
       <div className="mx-auto flex w-[80%] items-center justify-between md:w-[95%]">
         {/* Logo */}
-        <div className="logo flex items-center justify-center text-2xl font-semibold text-[#FC4308]">
-          News Dog
-        </div>
+        <NavLink
+          to={"/"}
+          className="logo flex items-center justify-center text-2xl font-bold text-primary"
+        >
+          NEWS DOG
+        </NavLink>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center justify-center gap-4 md:flex">
           {NavPages.map(({ name, path }, index) => (
-            <motion.div
-              key={index}
-              variants={{
-                rest: { color: "#000" },
-                hover: { color: "red" },
-                active: { color: "red" },
-              }}
-              animate={`${isActive === index ? "active" : "rest"}`}
-              whileHover="hover"
-              className="cursor-pointer"
-              onClick={() => setIsActive(index)}
-            >
-              <Link to={path}>{name}</Link>
-              <motion.div
-                variants={{
-                  rest: { width: "0%" },
-                  hover: { width: "100%", backgroundColor: "red" },
-                  active: { backgroundColor: "red" },
-                }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="h-[2.5px] bg-[red]"
-              ></motion.div>
-            </motion.div>
+            <NavLink to={path} key={index}>
+              <NavItem
+                index={index}
+                isActive={isActive}
+                setIsActive={setIsActive}
+              >
+                {name}
+              </NavItem>
+            </NavLink>
           ))}
         </nav>
 
@@ -70,14 +60,14 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute left-0 top-[8vh] z-50 flex w-full flex-col items-center gap-4 bg-white py-4 shadow-lg"
+            className="absolute left-0 top-[8vh] z-50 flex w-full flex-col items-center gap-4 bg-background py-4 shadow-lg"
           >
             {NavPages.map(({ name, path }, index) => (
-              <Link
+              <NavLink
                 key={index}
                 to={path}
                 className={`text-lg ${
-                  isActive === index ? "text-red-500" : "text-black"
+                  isActive === index ? "text-primary" : "text-foreground"
                 }`}
                 onClick={() => {
                   setIsActive(index);
@@ -85,7 +75,7 @@ const Navbar = () => {
                 }}
               >
                 {name}
-              </Link>
+              </NavLink>
             ))}
 
             <Button

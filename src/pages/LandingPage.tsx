@@ -9,9 +9,10 @@ import { useCategoryStore } from "@/stores/useCategoryStore";
 import { useLoadingStore } from "@/stores/useLoadingStore";
 import { useResultedArticleStore } from "@/stores/useResultedArticlesStore";
 import { motion } from "framer-motion";
+import { InternetIssue } from "@/components/reusableComponents/InternetIssue";
 
 const LandingPage: React.FC = () => {
-  const { setArticles } = useArticleStore();
+  const { articles, setArticles } = useArticleStore();
   const { category } = useCategoryStore();
   const { loading, setLoading } = useLoadingStore();
   const { resultedArticles, setResultedArticles } = useResultedArticleStore();
@@ -37,6 +38,31 @@ const LandingPage: React.FC = () => {
     fetchNews();
   }, [setArticles, category, setLoading, setResultedArticles]);
 
+  if (articles.length === 0 && !loading) {
+    return (
+      <div className={CONTAINER_STYLE}>
+        <SearchComp />
+        <InternetIssue />
+      </div>
+    );
+  }
+
+  if (resultedArticles.length === 0 && !loading) {
+    return (
+      <div className={CONTAINER_STYLE}>
+        <SearchComp />
+        <NoArticle />
+      </div>
+    );
+  }
+  if (resultedArticles.length === 0 && !loading) {
+    return (
+      <div className={CONTAINER_STYLE}>
+        <SearchComp />
+        <NoArticle />
+      </div>
+    );
+  }
   if (resultedArticles && loading) {
     return (
       <div className={CONTAINER_STYLE}>
@@ -64,15 +90,6 @@ const LandingPage: React.FC = () => {
             ) : null,
           )}
         </motion.div>
-      </div>
-    );
-  }
-
-  if (resultedArticles.length === 0 && !loading) {
-    return (
-      <div className={CONTAINER_STYLE}>
-        <SearchComp />
-        <NoArticle />
       </div>
     );
   }

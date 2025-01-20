@@ -6,7 +6,7 @@ const Loader = () => {
       <div className="mt-20 flex items-center justify-center gap-2">
         {[...Array(3)].map((_, i) => (
           <motion.div
-            className="h-8 w-8 rounded-full bg-red-500"
+            className="h-8 w-8 rounded-full bg-primary"
             key={i}
             animate={{ y: [0, -50, 0] }}
             transition={{
